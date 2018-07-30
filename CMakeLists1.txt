@@ -1,0 +1,65 @@
+
+#jackwu 
+
+project(test)
+
+cmake_minimum_required(VERSION 2.8)
+
+set(FILES_SRC_LS "hello" "list#world")
+list(APPEND FILES_SRC_LS  "")
+
+function (test args)
+ set(AR "HELLO WORLD")
+ message("${AR}") 
+endfunction()
+
+
+
+
+### test macro()
+
+message("################start macro()########")
+macro(test_app args)
+   set(args "abc")
+   message("files is:${args}")
+
+endmacro()
+test_app("jackwu macro")
+
+message("################end macro()###########")
+
+
+
+### test function()
+
+message("################start function()########")
+function(test_app_func args)
+   set(args "abc")
+   message("files is:${args}")
+
+endfunction()
+test_app_func("jackwu function")
+
+message("################end function()###########")
+
+message("${FILES_SRC_LS}")
+
+#ref
+
+set(LS "FDASSA")
+
+function (ref args)
+    set(${args} "set ref" parent_scope)
+endfunction()
+
+
+ref(LS)
+
+message("${LS}")
+
+
+
+
+
+
+test("hell")
